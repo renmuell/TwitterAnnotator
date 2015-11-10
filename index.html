@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Annotator</title>
+		<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/vendors/font-awesome-4.3.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/vendors-custom/spinner.css">
+  	<link rel="stylesheet" href="css/annotator.css">
+	</head>
+	<body>
+
+		<section id="annotator" class="pause">
+
+				<!-- Navigation Menu - - - - - - - - - - - - - - - - - - - - - - -  -->
+		    <nav>
+		    	<a id="previousBtn" href="/previous">
+		    		<i class="fa fa-angle-left"></i>
+	    		</a>
+					<a id="nextBtn" href="/next">
+						<i class="fa fa-angle-right"></i>
+					</a>
+					<a id="pauseBtn" href="/pause">
+						<i class="fa fa-coffee"></i>
+					</a>
+		    </nav>
+
+			  <!-- Tweet - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
+		    <form>
+
+						<div class="title">
+							<div class="logo">
+								<span class="fa-stack fa-lg fa-4x">
+								  <i class="fa fa-tag fa-stack-2x"></i>
+								  <i class="fa fa-twitter fa-stack-1x"></i>
+								</span>
+							</div>
+							<div class="name">
+								<span>Twitter</span>
+								<br>
+								<span>Annotator</span>
+							</div>
+						</div>
+
+		        <div id="loader">
+		            <div class="spinner">
+		            	<div></div>
+		            	<div></div>
+		            	<div></div>
+		            </div>
+		        </div>
+
+		        <p id="tweet"></p>
+
+		        <div class="btn-group">
+		            <button id="irrelevantBtn" type="submit" formaction="/irrelevant">Irrelevant</button>
+		            <button id="neutralBtn" type="submit" formaction="/neutral">Neutral</button>
+		            <button id="opinionatedBtn" type="submit" formaction="/opinionated">Opinionated</button>
+
+		        		<button id="goBtn" type="submit" formaaction="/go">Go <i class="fa fa-chevron-right"></i></button>
+		        </div>
+
+		    </form>
+
+		</section>
+
+		<script type="text/javascript" src="js/vendors/rainbow-1.1.9/rainbow.min.js"></script>
+		<script type="text/javascript" src="js/rainbow-tweet.js"></script>
+		<script type="text/javascript" src="js/annotator.io.js"></script>
+		<script type="text/javascript" src="js/annotator.js"></script>
+
+	</body>
+</html>
