@@ -1,13 +1,16 @@
 # TwitterAnnotator
 
-This is a little prototype i designed and programmed for a friend. You can annotate a tweet with one of three labels. Goal was simplicity and elegance.
+Twitter Annotator is an UI-Prototype for annotation tweets. Currently it has a dummy back-end to showcase the concept.
+
+While helping a friend to annotate tweets for his research paper, i created this little prototype. It was partly a design challenge and i wanted to show some possible improvements for this ui. 
+
+Goal was simplicity and elegance.
 
 ## Features
 
 - browser history support
 - tweet syntax highlight
-- pause annotation
-- as much vanilla JavaScript as possible
+- pause the annotation
 - keyboard support:
 
   Q - previous
@@ -16,9 +19,9 @@ This is a little prototype i designed and programmed for a friend. You can annot
   S - neutral
   D - opinionated
   Space – pause/resume
+  W - help
 
-
-## Thanks to:
+## Thanks to
 
 Twitter - https://twitter.com/
 Font-Awesome - http://fontawesome.io/
