@@ -14,7 +14,7 @@
 #annotator {
     width:100%;
 	min-height:270px;
-	min-width:400px;
+	min-width:320px;
     height:100%;
     position:relative;
     perspective:800px;
