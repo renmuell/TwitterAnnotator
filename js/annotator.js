@@ -12,15 +12,19 @@
   form,
   goBtn,
   nextBtn,
+  helpBtn,
   pauseBtn,
   neutralBtn,
+  helpContent,
   previousBtn,
+  closeHelpBtn,
   irrelevantBtn,
   opinionatedBtn,
-
+  
   KeyCodes = {
     q:81,
     e:69,
+	w:87,
     a:65,
     s:83,
     d:68,
@@ -39,18 +43,23 @@
       form = annotatorElm.querySelector('form');
       goBtn = annotatorElm.querySelector('#goBtn');
       nextBtn = annotatorElm.querySelector('#nextBtn');
+	  helpBtn = annotatorElm.querySelector('#helpBtn');
       pauseBtn = annotatorElm.querySelector('#pauseBtn');
       neutralBtn = annotatorElm.querySelector('#neutralBtn');
+	  helpContent = annotatorElm.querySelector('#helpContent');
       previousBtn = annotatorElm.querySelector('#previousBtn');
+	  closeHelpBtn = annotatorElm.querySelector('#closeHelpBtn');
       irrelevantBtn = annotatorElm.querySelector('#irrelevantBtn');
       opinionatedBtn = annotatorElm.querySelector('#opinionatedBtn');
 
       form.addEventListener("submit", Form_SubmitHandler);
       goBtn.addEventListener("click", GoBtn_ClickHandler);
       nextBtn.addEventListener("click", NextBtn_ClickHandler);
+	  helpBtn.addEventListener("click", HelpBtn_ClickHandler);
       pauseBtn.addEventListener("click", PauseBtn_ClickHandler);
       neutralBtn.addEventListener("click", NeutralBtn_ClickHanlder);
       previousBtn.addEventListener("click", PreviousBtn_ClickHandler);
+	  closeHelpBtn.addEventListener("click", HelpBtn_ClickHandler);
       irrelevantBtn.addEventListener("click", IrrelevantBtn_ClickHanlder);
       opinionatedBtn.addEventListener("click", OpinionatedBtn_ClickHanlder);
 
@@ -66,7 +75,9 @@
   /* Action Handler -------------------------------------------------------- */
 
   function Document_KeyDownHandler(event){
-    if (annotatorElm.className == '') {
+	if (event.keyCode === KeyCodes.w) {
+		ShowButtonPress(helpBtn);
+	} else if (annotatorElm.className == '') {
       switch(event.keyCode){
         case KeyCodes.q    : ShowButtonPress(previousBtn);    break;
         case KeyCodes.e    : ShowButtonPress(nextBtn);        break;
@@ -83,7 +94,10 @@
 
   function Document_KeyUpHandler(event){
     ShowButtonPressReset();
-    if (annotatorElm.className == '') {
+	
+	if (event.keyCode === KeyCodes.w) {
+		ToggleHelp();
+	} else if (annotatorElm.className == '' && !helpContent.classList.contains('open')) {
       switch(event.keyCode){
         case KeyCodes.q    : GetTweet(Annotator.IO.PreviousTweet); break;
         case KeyCodes.e    : GetTweet(Annotator.IO.NextTweet);     break;
@@ -117,7 +131,14 @@
     event.preventDefault();
     GetTweet(Annotator.IO.NextTweet);
   }
-
+  
+  function HelpBtn_ClickHandler(event){
+    event.preventDefault();
+	if (!helpBtn.classList.contains('open')) {
+		ToggleHelp();
+	}
+  }
+  
   function Form_SubmitHandler(event) {
     event.preventDefault();
   }
@@ -135,19 +156,28 @@
   }
 
   function ShowButtonPress(elm){
-    elm.className = 'active';
+    elm.classList.toggle('active');
   }
 
   function ShowButtonPressReset(){
-    goBtn.className = '';
-    nextBtn.className = '';
-    pauseBtn.className = '';
-    neutralBtn.className = '';
-    previousBtn.className = '';
-    irrelevantBtn.className = '';
-    opinionatedBtn.className = '';
+	[
+		goBtn,
+		nextBtn,
+		helpBtn,
+		pauseBtn,
+		neutralBtn,
+		previousBtn,
+		irrelevantBtn,
+		opinionatedBtn
+	].forEach(b => b.classList.remove('active'))
   }
 
+  /* HELP ------------------------------------------------------------------ */
+  
+  function ToggleHelp(){
+	helpContent.classList.toggle('open');
+  }
+  
   /* IO -------------------------------------------------------------------- */
 
   function SendPause() {
@@ -155,6 +185,7 @@
     annotatorElm.className = 'loading';
     Annotator.IO.Pause(function (json) {
       if (json.success) {
+		goBtn.querySelector('span').innerHTML = "Continue"; 
         annotatorElm.className = 'pause';
       } else {
 
@@ -195,7 +226,7 @@
 
   function SetTweet(tweet) {
     Rainbow.color(tweet, 'tweet', function(colored_tweet) {
-      var tweetElm = document.getElementById('tweet');
+      var tweetElm = document.getElementById('tweetContent');
       tweetElm.innerHTML = colored_tweet;
     });
   }
@@ -216,7 +247,7 @@
   }
 
   function SetTitle(tweetNum) {
-    document.title = 'Annotator - Tweet ' + tweetNum;
+    document.title = 'Twitter Annotator - Tweet ' + tweetNum;
   }
 
   function SetNextPreviousButton(existNext, existPrevious){

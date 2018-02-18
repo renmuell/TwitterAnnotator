@@ -15,7 +15,7 @@ Annotator.IO = (function() {
 	fakeTweets = [
 		{
 			tweet: 'Allen Ruiz by Yulia Gorbachenko >> www.inspirefirst.com/2015/05/29/all... Please RT #art #photography ',
-	  	chosen: ''
+			chosen: ''
 		},
 		{
 			tweet:'Revisiting one book proposal and beginning a beginning of a draft of another. Inspired by folks lately',
@@ -114,17 +114,17 @@ Annotator.IO = (function() {
 	}
 
 	function FakeNextTweet (callback) {
-	  if(currentTweetNum != fakeTweets.length - 1) {
-	  	currentTweetNum++;
-	  }
-	  FakeSendTweet(callback);
+		if(currentTweetNum != fakeTweets.length - 1) {
+			currentTweetNum++;
+		}
+		FakeSendTweet(callback);
 	}
 
 	function FakePreviousTweet(callback){
-    if(currentTweetNum != 0) {
-    	currentTweetNum--;
-    }
-    FakeSendTweet(callback);
+		if(currentTweetNum != 0) {
+			currentTweetNum--;
+		}
+		FakeSendTweet(callback);
 	}
 
 	function FakePause(callback) {
@@ -142,29 +142,29 @@ Annotator.IO = (function() {
 	function FakeGetTweet(num, callback){
 		num--;
 
-    if(num < 0) {
-    	num = 0;
-    }
-    else if (num > fakeTweets.length - 1) {
-    	num = fakeTweets.length - 1;
-    }
+		if(num < 0) {
+			num = 0;
+		}
+		else if (num > fakeTweets.length - 1) {
+			num = fakeTweets.length - 1;
+		}
 
-    currentTweetNum = num;
+		currentTweetNum = num;
 
-    FakeSendTweet(callback);
+		FakeSendTweet(callback);
 	}
 
 	function FakeSendTweet(callback) {
-    setTimeout(function () {
-      callback({
-      	success: fakeSuccessStatus,
-      	tweet: fakeTweets[currentTweetNum].tweet,
-      	chosen: fakeTweets[currentTweetNum].chosen,
-      	existNext: currentTweetNum < fakeTweets.length -1,
-      	existPrevious:  currentTweetNum > 0,
-      	currentTweetNum: currentTweetNum + 1
-      });
-    }, fakeServerTimeOffset);
+		setTimeout(function () {
+		  callback({
+			success: fakeSuccessStatus,
+			tweet: fakeTweets[currentTweetNum].tweet,
+			chosen: fakeTweets[currentTweetNum].chosen,
+			existNext: currentTweetNum < fakeTweets.length -1,
+			existPrevious:  currentTweetNum > 0,
+			currentTweetNum: currentTweetNum + 1
+		  });
+		}, fakeServerTimeOffset);
 	}
 
 }());

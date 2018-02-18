@@ -1,46 +1,46 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Annotator</title>
+		<title>Twitter Annotator</title>
 		<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="css/reset.css">
 		<link rel="stylesheet" href="css/vendors/font-awesome-4.3.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="css/vendors-custom/spinner.css">
-  	<link rel="stylesheet" href="css/annotator.css">
+		<link rel="stylesheet" href="css/annotator.css">
 	</head>
 	<body>
 
 		<section id="annotator" class="pause">
 
-				<!-- Navigation Menu - - - - - - - - - - - - - - - - - - - - - -  -->
+			<!-- Navigation Menu - - - - - - - - - - - - - - - - - - - - - -  -->
 		    <nav>
-		    	<a id="previousBtn" href="/previous">
+		    	<a id="previousBtn" class="nav-btn" href="/previous">
 		    		<i class="fa fa-angle-left"></i>
 	    		</a>
-					<a id="nextBtn" href="/next">
-						<i class="fa fa-angle-right"></i>
-					</a>
-					<a id="pauseBtn" href="/pause">
-						<i class="fa fa-coffee"></i>
-					</a>
+				<a id="nextBtn" class="nav-btn" href="/next">
+					<i class="fa fa-angle-right"></i>
+				</a>
+				<a id="pauseBtn" class="nav-btn" href="/pause">
+					<i class="fa fa-coffee"></i>
+				</a>
 		    </nav>
 
-			  <!-- Tweet - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
+			<!-- Tweet - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
 		    <form>
 
-						<div class="title">
-							<div class="logo">
-								<span class="fa-stack fa-lg fa-4x">
-								  <i class="fa fa-tag fa-stack-2x"></i>
-								  <i class="fa fa-twitter fa-stack-1x"></i>
-								</span>
-							</div>
-							<div class="name">
-								<span>Twitter</span>
-								<br>
-								<span>Annotator</span>
-							</div>
-						</div>
+				<div class="title">
+					<div class="logo">
+						<span class="fa-stack fa-lg fa-4x">
+						  <i class="fa fa-tag fa-stack-2x"></i>
+						  <i class="fa fa-twitter fa-stack-1x"></i>
+						</span>
+					</div>
+					<h1 class="name">
+						<span>Twitter</span>
+						<br>
+						<span>Annotator</span>
+					</h1>
+				</div>
 
 		        <div id="loader">
 		            <div class="spinner">
@@ -50,18 +50,107 @@
 		            </div>
 		        </div>
 
-		        <p id="tweet"></p>
+		        <div id="tweet">
+					<div id="tweetContent"></div>
+				</div>
 
 		        <div class="btn-group">
 		            <button id="irrelevantBtn" type="submit" formaction="/irrelevant">Irrelevant</button>
 		            <button id="neutralBtn" type="submit" formaction="/neutral">Neutral</button>
 		            <button id="opinionatedBtn" type="submit" formaction="/opinionated">Opinionated</button>
-
-		        		<button id="goBtn" type="submit" formaaction="/go">Go <i class="fa fa-chevron-right"></i></button>
+					<button id="goBtn" type="submit" formaaction="/go"><span>Go</span> <i class="fa fa-chevron-right"></i></button>
 		        </div>
 
 		    </form>
 
+			<!-- Help - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
+			<a id="helpBtn" class="nav-btn" href="/help">
+				<i class="fa fa-question"></i>
+			</a>
+			<section id="helpContent">
+				
+				<a id="closeHelpBtn" class="nav-btn" href="/closeHelp">
+					<i class="fa fa-close"></i>
+				</a>
+				
+				<h2>Help</h2>
+				
+				<p>
+					
+				</p>
+				
+				<h3>Interface</h3>
+				
+				<img style="border-radius: 20px;" src="img/screenshot.png"/>
+				
+				<p>
+					
+				</p>
+				
+				<h3>Features</h3>
+				
+				<p>
+					
+				</p>
+				
+				<h3>Keyboard shortcuts</h3>
+				
+				<img src="img/keyboard.png"/>
+				
+				<br><br>
+				
+				<table style="margin: 0 auto">
+					<tbody>
+						<tr>
+							<td style="width:200px">Q</td>
+							<td>previous Tweet</td>
+						</tr>
+						<tr>
+							<td>E</td>
+							<td>next Tweet</td>
+						</tr>
+						<tr>
+							<td>A</td>
+							<td>set Irrelevant</td>
+						</tr>
+						<tr>
+							<td>S</td>
+							<td>set Neutral</td>
+						</tr>
+						<tr>
+							<td>D</td>
+							<td>set Opinionated</td>
+						</tr>
+						<tr>
+							<td>Space</td>
+							<td>pause/resume</td>
+						</tr>
+						<tr>
+							<td>W</td>
+							<td>toggle Help</td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<h3>Dev</h3>
+				
+				<p>
+					
+				</p>
+
+			</section>
+			
+			<!-- Error - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
+			<!--section id="errorContent">
+				<a id="closeErrorBtn" class="nav-btn" href="/closeError">
+					<i class="fa fa-close"></i>
+				</a>
+				<h2>Error</h2>
+				<p>
+				
+				</p>
+			</section-->
+			
 		</section>
 
 		<script type="text/javascript" src="js/vendors/rainbow-1.1.9/rainbow.min.js"></script>

@@ -4,13 +4,17 @@
 #annotator a,
 #annotator nav,
 #annotator p,
-#annotator form {
+#annotator form,
+#annotator h1 {
     padding:0;
     margin:0;
     font-family:Verdana, Geneva, sans-serif!important;
 }
+
 #annotator {
     width:100%;
+	min-height:270px;
+	min-width:400px;
     height:100%;
     position:relative;
     perspective:800px;
@@ -45,19 +49,28 @@
     display:none;
     width:100%;
     height:100%;
-    position:absolute;
+	display: table-cell;
+	vertical-align: middle;
 }
 #annotator.loading #loader {
-    display:block;
+	display: block;
+}
+
+#annotator:not(.loading) #loader {
+    display:none;
 }
 
 /* Logo & Tweet ------------------------------------------------------------ */
 
 #annotator #tweet,
 #annotator form .title {
-    height:110px;
-    width:360px;
-    padding:20px;
+	display: table-cell;
+	vertical-align: middle;
+    height:150px;
+    width:400px;
+	max-width: 400px;
+	max-height:150px;
+	overflow:auto;
     font-size:14px;
     box-shadow: 0 -8px 11px -3px #efefef inset;
     transition:all .3s;
@@ -101,7 +114,7 @@
 /* Tweet ------------------------------------------------------------------- */
 
 #annotator form #tweet {
-    word-wrap: break-word;
+    word-wrap: break-word;    
 }
 
 #annotator form #tweet span {
@@ -116,9 +129,19 @@
     display: none;
 }
 
+#annotator.loading #tweet {
+    display:none;
+}
+
+#tweetContent {
+    max-height: 110px;
+    overflow: auto;
+    padding: 20px;
+}
+
 /* Link-Button ------------------------------------------------------------- */
 
-#annotator nav a {
+#annotator .nav-btn {
     color:#444;
     text-decoration: none;
     display:table-cell;
@@ -133,11 +156,11 @@
                 left .7s cubic-bezier(.14, .49, .54, 1.16),
                 top .7s cubic-bezier(.14, .49, .54, 1.16);
 }
-#annotator nav a:hover {
+#annotator .nav-btn:hover {
     background-color:#efefef;
 }
-#annotator nav a:active,
-#annotator nav a.active{
+#annotator .nav-btn:active,
+#annotator .nav-btn.active { 
     background-color:#559BEC;
     color:white;
 }
@@ -161,7 +184,7 @@
     left:50%;
     margin-left:-30px;
 }
-#annotator nav a i {
+#annotator .nav-btn i  {
     margin-top:13px;
 }
 #annotator.loading nav a#nextBtn,
@@ -181,12 +204,78 @@
     opacity: 1;
     pointer-events:all;
 }
+
+/* Help -------------------------------------------------------------------- */
+
+#annotator a#helpBtn {
+	position: fixed;
+	display:block;
+	top:0;
+	right:0;
+	border-radius: 0;
+	border-bottom-left-radius:30px;
+	z-index: 99;
+}
+
+#annotator #helpContent {
+	overflow: auto;
+	position: fixed;
+	padding:10px;
+	padding-right:60px;
+	opacity:0;
+	top:0;
+	right:0;
+    left:100%;
+	bottom:100%;
+	background-color:#559BEC;
+    color:white;
+	border-bottom-left-radius:100%;
+	transition: all .4s cubic-bezier(.14, .49, .54, 1.16);
+	z-index:999;
+	text-align:center;
+}
+
+#annotator #helpContent p {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+	text-align:justify;
+}
+
+#annotator #helpContent:not(.open) {
+	overflow:hidden;
+	pointer-events:none;
+}
+
+#annotator #helpContent.open {
+	opacity:1;
+	left:0;
+	bottom:0;
+	border-bottom-left-radius:0;
+}
+
+#annotator a#closeHelpBtn {
+	background-color:transparent;
+	color:white;
+	box-shadow: 0 0 4px white;
+	position: fixed;
+	display:block;
+	top:0;
+	right:0;
+	border-radius: 0;
+	border-bottom-left-radius:30px;
+	z-index: 99;
+}
+
 /* Submit Button ----------------------------------------------------------- */
 
 #annotator .btn-group {
     height:50px;
     width:100%;
     box-shadow: 0 0 10px #efefef inset;
+	position: absolute;
+	bottom:0;
 }
 #annotator .btn-group button {
     color:#444;
@@ -235,6 +324,7 @@
 #annotator.pause .btn-group button:not(#goBtn) {
     display: none;
 }
+
 #annotator:not(.pause) .btn-group button#goBtn {
     display: none;
 }
@@ -264,25 +354,30 @@
         z-index: 0;
     }
 
+	#annotator.loading #loader {
+		display: table-cell;
+        padding: 50px;
+        overflow: auto;
+		height: 100vh;
+		width:100vw;
+		box-sizing: border-box;
+	}
+
+	#annotator.loading #loader .spinner {
+		 margin: 0 auto;
+	}
+	
     /* Logo & Tweet -------------------------------------------------------- */
 
-    #annotator #tweet,
-    #annotator form .title  {
-        position: absolute;
-        top:0;
-        left:0;
-        right: 0;
-        bottom: 50px;
-        height: auto;
-        width: auto;
-    }
-
-    /* Tweet --------------------------------------------------------------- */
-
+	#annotator form .title,
     #annotator #tweet {
         padding: 50px;
-        padding-bottom: 10px;
         overflow: auto;
+		height: 100vh;
+		max-width: 100vw;
+		width: 100vw;
+		box-sizing: border-box;
+		padding-bottom: 100px;
     }
 
     /* Link-Button --------------------------------------------------------- */

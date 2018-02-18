@@ -9,26 +9,17 @@ This is a little prototype i designed and programmed for a friend. You can annot
 - keyboard support:
 
 	Q - previous
-	
 	E - next
-	
 	A - irrelevant
-	
 	S - neutral
-	
 	D - opinionated
-	
 	Space – pause/resume
 
 
 Thanks to:
 
 Twitter - https://twitter.com/
-
 Font-Awesome - http://fontawesome.io/
-
 rainbow-1.1.9 - https://craig.is/making/rainbows
-
 Load Spinner by http://tobiasahlin.com/spinkit/
-
 Google Fonts, Lato - https://www.google.com/fonts/specimen/Lato
