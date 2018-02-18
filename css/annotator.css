@@ -236,11 +236,13 @@
 }
 
 #annotator #helpContent p {
-    margin-top: 1em;
-    margin-bottom: 1em;
-    margin-left: 0;
-    margin-right: 0;
-	text-align:justify;
+    max-width: 600px;
+    margin: 1em auto;
+    text-align: justify;
+}
+
+#annotator #helpContent img {
+    max-width: 100%;
 }
 
 #annotator #helpContent:not(.open) {

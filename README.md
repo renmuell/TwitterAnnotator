@@ -2,6 +2,8 @@
 
 This is a little prototype i designed and programmed for a friend. You can annotate a tweet with one of three labels. Goal was simplicity and elegance.
 
+## Features
+
 - browser history support
 - tweet syntax highlight
 - pause annotation
@@ -16,7 +18,7 @@ This is a little prototype i designed and programmed for a friend. You can annot
   Space – pause/resume
 
 
-Thanks to:
+## Thanks to:
 
 Twitter - https://twitter.com/
 Font-Awesome - http://fontawesome.io/
