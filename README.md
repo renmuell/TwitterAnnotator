@@ -23,8 +23,8 @@ Goal was simplicity and elegance.
 
 ## Thanks to
 
-Twitter - https://twitter.com/
-Font-Awesome - http://fontawesome.io/
-rainbow-1.1.9 - https://craig.is/making/rainbows
-Load Spinner by http://tobiasahlin.com/spinkit/
-Google Fonts, Lato - https://www.google.com/fonts/specimen/Lato
+- Twitter - https://twitter.com/
+- Font-Awesome - http://fontawesome.io/
+- rainbow-1.1.9 - https://craig.is/making/rainbows
+- Load Spinner by http://tobiasahlin.com/spinkit/
+- Google Fonts, Lato - https://www.google.com/fonts/specimen/Lato
