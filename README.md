@@ -8,12 +8,12 @@ This is a little prototype i designed and programmed for a friend. You can annot
 - as much vanilla JavaScript as possible
 - keyboard support:
 
-	Q - previous
-	E - next
-	A - irrelevant
-	S - neutral
-	D - opinionated
-	Space – pause/resume
+  Q - previous
+  E - next
+  A - irrelevant
+  S - neutral
+  D - opinionated
+  Space – pause/resume
 
 
 Thanks to:

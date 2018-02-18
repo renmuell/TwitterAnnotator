@@ -11,7 +11,7 @@ Annotator.IO = (function() {
 	var
 	currentTweetNum = 0,
 	fakeSuccessStatus = true,
-	fakeServerTimeOffset = 1500,
+	fakeServerTimeOffset = 900,
 	fakeTweets = [
 		{
 			tweet: 'Allen Ruiz by Yulia Gorbachenko >> www.inspirefirst.com/2015/05/29/all... Please RT #art #photography ',
