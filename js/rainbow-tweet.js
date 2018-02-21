@@ -1,7 +1,10 @@
-/**
- *  Contains an extension language for
- *  rainbow.js, the Tweet Syntax.
- */
+/******************************************************************************
+ * rainbow-tweet.js
+ *
+ *  Contains an extension language for rainbow.js, the Tweet Syntax.
+ *
+ *****************************************************************************/
+
 Rainbow.extend('tweet', [{
     'name': 'tweet-user',
     'pattern': /@[^\s]*/g

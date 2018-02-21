@@ -18,7 +18,7 @@ Goal was simplicity and elegance.
   A - irrelevant
   S - neutral
   D - opinionated
-  Space – pause/resume
+  C – pause/resume
   W - help
 
 ## Thanks to
