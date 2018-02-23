@@ -8,7 +8,7 @@
 /* global Annotator, Rainbow */
 
 /** @namespace Annotator */
-var Annotator = {} || Annotator;
+var Annotator = Annotator || {};
 
 /**
  *  The user interface logic
@@ -292,9 +292,9 @@ Annotator.UI = (function(){
   }
 
   /**
-   *  Gets current 
+   *  Gets next or  
    *
-   *  @param {function} annotation - chosen text
+   *  @param {function} ioCall - chosen text
    *  @return {undefined}
    */
   function GetTweet(ioCall){

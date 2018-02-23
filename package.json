@@ -1,0 +1,32 @@
+{
+  "name": "twitterannotator",
+  "version": "1.0.3",
+  "description": "Twitter Annotator is an UI-Prototype for annotation tweets.",
+  "main": "index.html",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "build": "npm run lint & npm run jsdoc & npm run htmlMinify & npm run jsMinfy & npm run cssMinfy",
+    "lint": "eslint js/annotator.ui.js js/annotator.io.js",
+    "jsdoc": "jsdoc -d jsdoc -a all -p js/annotator.ui.js  js/annotator.io.js",
+    "htmlMinify": "html-minifier --help -o index.html index.src.html --remove-comments --collapse-whitespace --minify-js --minify-css",
+    "jsMinfy": " minify js/annotator.ui.js  -c --no-comments & minify js/annotator.io.js -c --no-comments & minify js/rainbow-tweet.js -c --no-comments",
+    "cssMinfy": " minify css/annotator.css -c --no-comments",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/renmuell/TwitterAnnotator.git"
+  },
+  "keywords": [
+    "twitter",
+    "annotator"
+  ],
+  "author": "Rene Müller <rene.mueller.code@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/renmuell/TwitterAnnotator/issues"
+  },
+  "homepage": "https://github.com/renmuell/TwitterAnnotator#readme"
+}
