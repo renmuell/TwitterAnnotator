@@ -187,6 +187,7 @@
     text-decoration: none;
     display:table-cell;
     background-color:white;
+    padding: 1px 7px 2px 7px;
     width:60px;
     height:60px;
     border-radius:30px;
