@@ -527,6 +527,7 @@ body.no-js .annotator .nojsError {
         width: 100%;
     }
     .annotator nav {
+        overflow: hidden;
         z-index:1;
     }
     .annotator.loading nav,
