@@ -21,8 +21,17 @@ Annotator.UI = (function(){
   'use strict';
 
   var
-    /* @type {Element} */
+
+    /**
+     *  Wrapper element for the annotator app.
+     *
+     *  @private
+     *  @memberof Annotator.UI
+     *  @inner
+     *  @type {Element} 
+     */
     annotatorElm,
+
     /* @type {boolean} */
     userSetUrlHash,
 
@@ -71,10 +80,13 @@ Annotator.UI = (function(){
   /**
    *  Keyboard event on pressing down.
    *
+   *  @private
+   *  @memberof Annotator.UI
+   *  @inner
    *  @param {KeyboardEvent} event - keydown event
    *  @return {undefined}
    */
-  function Document_KeyDownHandler(event){
+  function Document_KeyDownHandler (event) {
     if (event.keyCode === KeyCodes.w) {
       ShowButtonPress(helpBtn);
     } else if (!annotatorElm.classList.contains('pause')) {
@@ -86,7 +98,7 @@ Annotator.UI = (function(){
         case KeyCodes.d : ShowButtonPress(opinionatedBtn); break;
         case KeyCodes.c : ShowButtonPress(pauseBtn);
       }
-    } else if (annotatorElm.classList.contains('pause') && event.keyCode == KeyCodes.c){
+    } else if (annotatorElm.classList.contains('pause') && event.keyCode == KeyCodes.c) {
       ShowButtonPress(goBtn);
     }
   }
@@ -94,10 +106,13 @@ Annotator.UI = (function(){
   /**
    *  Keyboard event on releasing up.
    *
+   *  @private
+   *  @memberof Annotator.UI
+   *  @inner
    *  @param {KeyboardEvent} event - keyup event
    *  @return {undefined}
    */
-  function Document_KeyUpHandler(event){
+  function Document_KeyUpHandler (event) {
     ShowButtonPressReset();
 
     if (event.keyCode === KeyCodes.w) {
@@ -111,7 +126,7 @@ Annotator.UI = (function(){
         case KeyCodes.d : SendAnnotation('Opinionated');        break;
         case KeyCodes.c : SendPause();
       }
-    } else if (annotatorElm.classList.contains('pause') && event.keyCode == KeyCodes.c){
+    } else if (annotatorElm.classList.contains('pause') && event.keyCode == KeyCodes.c) {
       SendResume();
     }
   }
@@ -119,9 +134,12 @@ Annotator.UI = (function(){
   /**
    *  ClickHanlder for PauseBtn.
    *
+   *  @private
+   *  @memberof Annotator.UI
+   *  @inner
    *  @return {undefined}    
    */
-  function PauseBtn_ClickHandler(){
+  function PauseBtn_ClickHandler () {
     pauseBtn.blur();
     SendPause();
   }
@@ -129,9 +147,12 @@ Annotator.UI = (function(){
   /**
    *  ClickHanlder for GoBtn.
    *
+   *  @private
+   *  @memberof Annotator.UI
+   *  @inner
    *  @return {undefined}    
    */
-  function GoBtn_ClickHandler(){
+  function GoBtn_ClickHandler () {
     goBtn.blur();
     SendResume();
   }
@@ -139,9 +160,12 @@ Annotator.UI = (function(){
   /**
    *  ClickHanlder for PreviousBtn.
    *
+   *  @private
+   *  @memberof Annotator.UI
+   *  @inner
    *  @return {undefined}    
    */
-  function PreviousBtn_ClickHandler(){
+  function PreviousBtn_ClickHandler () {
     previousBtn.blur();
     GetTweet(Annotator.IO.PreviousTweet);
   }
@@ -149,9 +173,12 @@ Annotator.UI = (function(){
   /**
    *  ClickHanlder for NextBtn.
    *
+   *  @private
+   *  @memberof Annotator.UI
+   *  @inner
    *  @return {undefined}    
    */
-  function NextBtn_ClickHandler(){
+  function NextBtn_ClickHandler () {
     nextBtn.blur();
     GetTweet(Annotator.IO.NextTweet);
   }
@@ -159,9 +186,12 @@ Annotator.UI = (function(){
   /**
    *  ClickHanlder for HelpBtn.
    *
+   *  @private
+   *  @memberof Annotator.UI
+   *  @inner
    *  @return {undefined}    
    */
-  function HelpBtn_ClickHandler(){
+  function HelpBtn_ClickHandler () {
     helpBtn.blur();
     if (!helpBtn.classList.contains('open')) {
       ToggleHelp();
@@ -171,19 +201,25 @@ Annotator.UI = (function(){
   /**
    *  ClickHanlder for PauseBtn.
    *
+   *  @private
+   *  @memberof Annotator.UI
+   *  @inner
    *  @param {Event} event - submit event
    *  @return {undefined}    
    */
-  function Form_SubmitHandler(event) {
+  function Form_SubmitHandler (event) {
     event.preventDefault();
   }
 
   /**
    *  ClickHanlder for NeutralBtn.
    *
+   *  @private
+   *  @memberof Annotator.UI
+   *  @inner
    *  @return {undefined}    
    */
-  function NeutralBtn_ClickHanlder() {
+  function NeutralBtn_ClickHanlder () {
     neutralBtn.blur();
     SendAnnotation('Neutral');
   }
@@ -191,9 +227,12 @@ Annotator.UI = (function(){
   /**
    *  ClickHanlder for IrrelevantBtn.
    *
+   *  @private
+   *  @memberof Annotator.UI
+   *  @inner
    *  @return {undefined}
    */
-  function IrrelevantBtn_ClickHanlder() {
+  function IrrelevantBtn_ClickHanlder () {
     irrelevantBtn.blur();
     SendAnnotation('Irrelevant');
   }
@@ -201,9 +240,12 @@ Annotator.UI = (function(){
   /**
    *  ClickHanlder for OpinionatedBtn.
    *
+   *  @private
+   *  @memberof Annotator.UI
+   *  @inner
    *  @return {undefined}
    */
-  function OpinionatedBtn_ClickHanlder() {
+  function OpinionatedBtn_ClickHanlder () {
     opinionatedBtn.blur();
     SendAnnotation('Opinionated');
   }
@@ -211,19 +253,25 @@ Annotator.UI = (function(){
   /**
    *  Show button press state by toggle active class on.
    *
+   *  @private
+   *  @memberof Annotator.UI
+   *  @inner
    *  @param {Element} elm - the element
    *  @return {undefined}
    */
-  function ShowButtonPress(elm){
+  function ShowButtonPress (elm) {
     elm.classList.toggle('active');
   }
 
   /**
    *  Reset button press state of all used buttons by toggle active class off.
    *
+   *  @private
+   *  @memberof Annotator.UI
+   *  @inner
    *  @return {undefined}
    */
-  function ShowButtonPressReset(){
+  function ShowButtonPressReset () {
     [
       goBtn,
       nextBtn,
@@ -233,7 +281,7 @@ Annotator.UI = (function(){
       previousBtn,
       irrelevantBtn,
       opinionatedBtn
-    ].forEach(function(b){ 
+    ].forEach(function (b) { 
       b.classList.remove('active');
     });
   }
@@ -243,9 +291,12 @@ Annotator.UI = (function(){
   /**
    *  Open or close the help.
    *
+   *  @private
+   *  @memberof Annotator.UI
+   *  @inner
    *  @return {undefined}
    */
-  function ToggleHelp(){
+  function ToggleHelp () {
     helpContent.classList.toggle('open');
   }
 
@@ -254,12 +305,15 @@ Annotator.UI = (function(){
   /**
    *  Send pause to server.
    *
+   *  @private
+   *  @memberof Annotator.UI
+   *  @inner
    *  @return {undefined}
    */
-  function SendPause() {
+  function SendPause () {
     SetTweet('');
     annotatorElm.classList.add('loading');
-    Annotator.IO.Pause(function(json) {
+    Annotator.IO.Pause(function (json) {
       if (json.success) {
         goBtn.querySelector('span').innerHTML = 'Continue'; 
         annotatorElm.classList.remove('loading');
@@ -271,9 +325,12 @@ Annotator.UI = (function(){
   /**
    *  Send resume to server.
    *
+   *  @private
+   *  @memberof Annotator.UI
+   *  @inner
    *  @return {undefined}
    */
-  function SendResume(){
+  function SendResume () {
     annotatorElm.classList.remove('pause');
     annotatorElm.classList.add('loading');
     Annotator.IO.Resume(AnnotatorIO_TweetHandler);
@@ -282,10 +339,13 @@ Annotator.UI = (function(){
   /**
    *  Send annotation of tweet to server.
    *
+   *  @private
+   *  @memberof Annotator.UI
+   *  @inner
    *  @param {string} annotation - chosen text
    *  @return {undefined}
    */
-  function SendAnnotation(annotation) {
+  function SendAnnotation (annotation) {
     annotatorElm.classList.remove('pause');
     annotatorElm.classList.add('loading');
     Annotator.IO.SendAnnotation(annotation, AnnotatorIO_TweetHandler);
@@ -294,27 +354,51 @@ Annotator.UI = (function(){
   /**
    *  Gets next or  
    *
+   *  @private
+   *  @memberof Annotator.UI
+   *  @inner
    *  @param {function} ioCall - chosen text
    *  @return {undefined}
    */
-  function GetTweet(ioCall){
+  function GetTweet (ioCall) {
     annotatorElm.classList.remove('pause');
     annotatorElm.classList.add('loading');
     ioCall(AnnotatorIO_TweetHandler);
   }
 
-  function GetTweetByNumber(num){
+  /**
+   *  Gets on specific tweet for annotation by number. 
+   *
+   *  @private
+   *  @memberof Annotator.UI
+   *  @inner
+   *  @param {number} num - tweet number
+   *  @return {undefined}
+   */
+  function GetTweetByNumber (num) {
     annotatorElm.classList.remove('pause');
     annotatorElm.classList.add('loading');
     Annotator.IO.GetTweet(num, AnnotatorIO_TweetHandler);
   }
 
-  function AnnotatorIO_TweetHandler(json){
+  /**
+   *  Handling io calls. 
+   *
+   *  @private
+   *  @memberof Annotator.UI
+   *  @inner
+   *  @param {object} json - result of io call
+   *  @return {undefined}
+   */
+  function AnnotatorIO_TweetHandler (json) {
     if (json.success) {
+      
       form.classList.remove('Neutral', 'Irrelevant', 'Opinionated');
+
       if (json.chosen) {
         form.classList.add(json.chosen);
       }
+      
       SetTweet(json.tweet);
       SetNavigation(json);
       SetStatus(json);
@@ -326,38 +410,93 @@ Annotator.UI = (function(){
     }
   }
 
-  function SetTweet(tweet) {
-    Rainbow.color(tweet, 'tweet', function(colored_tweet) {
+  /**
+   *  Set current tweet text.
+   *
+   *  @private
+   *  @memberof Annotator.UI
+   *  @inner
+   *  @param {string} tweet - tweet text
+   *  @return {undefined}
+   */
+  function SetTweet (tweet) {
+    Rainbow.color(tweet, 'tweet', function (colored_tweet) {
       tweetContent.innerHTML = colored_tweet;
     });
   }
 
   /* Status ---------------------------------------------------------------- */
 
-  function SetStatus(json){
+  /**
+   *  Set status of annotation.
+   *
+   *  @private
+   *  @memberof Annotator.UI
+   *  @inner
+   *  @param {object} json - result of io call 
+   *  @return {undefined}
+   */
+  function SetStatus (json) {
     statusBtn.innerHTML = json.countAnnotatedTweets + '/' + json.countTweets;
   }
 
   /* URL Hash -------------------------------------------------------------- */
 
-  function SetNavigation(json){
+  /**
+   *  Set browser navigation.
+   *
+   *  @private
+   *  @memberof Annotator.UI
+   *  @inner
+   *  @param {object} json - result of io call 
+   *  @return {undefined}
+   */
+  function SetNavigation (json) {
     SetUrlHash(json.currentTweetNum);
     SetTitle(json.currentTweetNum);
     SetNextPreviousButton(json.hasNext, json.hasPrevious);
   }
 
-  function SetUrlHash (currentTweetNum){
+  /**
+   *  Set browser URL hash.
+   *
+   *  @private
+   *  @memberof Annotator.UI
+   *  @inner
+   *  @param {number} currentTweetNum - current number of tweet
+   *  @return {undefined}
+   */
+  function SetUrlHash (currentTweetNum) {
     if (window.location.hash != '#' + currentTweetNum.toString()) {
       userSetUrlHash = false;
       window.location.hash = currentTweetNum;
     }
   }
 
-  function SetTitle(tweetNum) {
-    document.title = 'Twitter Annotator - Tweet ' + tweetNum;
+  /**
+   *  Set website title.
+   *
+   *  @private
+   *  @memberof Annotator.UI
+   *  @inner
+   *  @param {number} currentTweetNum - current number of tweet
+   *  @return {undefined}
+   */
+  function SetTitle (currentTweetNum) {
+    document.title = 'Twitter Annotator - Tweet ' + currentTweetNum;
   }
 
-  function SetNextPreviousButton(hasNext, hasPrevious){
+  /**
+   *  Set button state for next and previous tweet.
+   *
+   *  @private
+   *  @memberof Annotator.UI
+   *  @inner
+   *  @param {boolean} hasNext - has next tweet to annotate
+   *  @param {boolean} hasPrevious - has previous tweet to annotate
+   *  @return {undefined}
+   */
+  function SetNextPreviousButton (hasNext, hasPrevious) {
     
     if (hasNext) {
       nav.classList.add('hasNext');
@@ -377,7 +516,15 @@ Annotator.UI = (function(){
     }
   }
 
-  function Window_HashchangeHandler(){
+  /**
+   *  Handler for window 'hashchange' event.
+   *
+   *  @private
+   *  @memberof Annotator.UI
+   *  @inner
+   *  @return {undefined}
+   */
+  function Window_HashchangeHandler () {
     if(userSetUrlHash && window.location.hash) {
       var hash = window.location.hash.substring(1);
       GetTweetByNumber(parseInt(hash, 10));
@@ -390,14 +537,16 @@ Annotator.UI = (function(){
   return {
 
     /**
-     *  Initialize Script
+     *  Initialize Script.
      *  
+     *  @public
      *  @memberof Annotator.UI
      *  @example 
      *    Annotator.UI.Run();
      *  @return {undefined}
      */
-    Run: function(){
+    Run: function () {
+
       userSetUrlHash = true;
 
       annotatorElm = document.querySelector('.annotator');

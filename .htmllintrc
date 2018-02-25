@@ -1,0 +1,7 @@
+{
+    "plugins": [],
+    "indent-width": 2,
+    "tag-bans": [],
+    "attr-name-style": false,
+    "id-class-style": false
+}

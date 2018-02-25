@@ -14,13 +14,17 @@ var Annotator = Annotator || {};
  *  @memberof Annotator
  *  @namespace Annotator.IO
  */
-Annotator.IO = (function() {
+Annotator.IO = (function () {
   'use strict';
 
   var
+    /* @type {number} */
     currentTweetNum = 0,
+    /* @type {boolean} */
     fakeSuccessStatus = true,
+    /* @type {number} */
     fakeServerTimeOffset = 900,
+    /* @type {array} */
     fakeTweets = [{
       tweet: 'Allen Ruiz by Yulia Gorbachenko >> www.inspirefirst.com/2015/05/29/all... Please RT #art #photography ',
       chosen: ''
@@ -77,7 +81,14 @@ Annotator.IO = (function() {
   /* Fake Method ----------------------------------------------------------- */
 
   /**
+   *  
    *
+   *  @private
+   *  @memberof Annotator.IO
+   *  @inner
+   *  @param {string} annotation - 
+   *  @param {function} callback - 
+   *  @return {undefined}    
    */
   function FakeSendAnnotation (annotation, callback) {
     fakeTweets[currentTweetNum].chosen = annotation;
@@ -85,30 +96,48 @@ Annotator.IO = (function() {
   }
   
   /**
+   *  
    *
+   *  @private
+   *  @memberof Annotator.IO
+   *  @inner
+   *  @param {function} callback - 
+   *  @return {undefined}    
    */
   function FakeNextTweet (callback) {
-    if(currentTweetNum != fakeTweets.length - 1) {
+    if (currentTweetNum != fakeTweets.length - 1) {
       currentTweetNum++;
     }
     FakeSendTweet(callback);
   }
   
   /**
+   *  
    *
+   *  @private
+   *  @memberof Annotator.IO
+   *  @inner
+   *  @param {function} callback - 
+   *  @return {undefined}    
    */
-  function FakePreviousTweet(callback){
-    if(currentTweetNum != 0) {
+  function FakePreviousTweet (callback) {
+    if (currentTweetNum != 0) {
       currentTweetNum--;
     }
     FakeSendTweet(callback);
   }
   
   /**
+   *  
    *
+   *  @private
+   *  @memberof Annotator.IO
+   *  @inner
+   *  @param {function} callback - 
+   *  @return {undefined}    
    */
-  function FakePause(callback) {
-    setTimeout(function(){
+  function FakePause (callback) {
+    setTimeout(function () {
       callback({
         success: fakeSuccessStatus
       });
@@ -116,19 +145,32 @@ Annotator.IO = (function() {
   }
   
   /**
+   *  
    *
+   *  @private
+   *  @memberof Annotator.IO
+   *  @inner
+   *  @param {function} callback - 
+   *  @return {undefined}    
    */
-  function FakeResume(callback) {
+  function FakeResume (callback) {
     FakeSendTweet(callback);
   }
   
   /**
+   *  
    *
+   *  @private
+   *  @memberof Annotator.IO
+   *  @inner
+   *  @param {number} num - 
+   *  @param {function} callback - 
+   *  @return {undefined}    
    */
-  function FakeGetTweet(num, callback){
+  function FakeGetTweet (num, callback) {
     num--;
 
-    if(num < 0) {
+    if (num < 0) {
       num = 0;
     }
     else if (num > fakeTweets.length - 1) {
@@ -139,11 +181,16 @@ Annotator.IO = (function() {
 
     FakeSendTweet(callback);
   }
-  
   /**
+   *  
    *
+   *  @private
+   *  @memberof Annotator.IO
+   *  @inner
+   *  @param {function} callback - 
+   *  @return {undefined}    
    */
-  function FakeSendTweet(callback) {
+  function FakeSendTweet (callback) {
     setTimeout(function () {
       callback({
         tweet:                fakeTweets[currentTweetNum].tweet,
@@ -153,7 +200,7 @@ Annotator.IO = (function() {
         countTweets:          fakeTweets.length,
         hasPrevious:          currentTweetNum > 0,
         currentTweetNum:      currentTweetNum + 1,
-        countAnnotatedTweets: fakeTweets.filter(function(t){
+        countAnnotatedTweets: fakeTweets.filter(function (t) {
           return t.chosen !== '';
         }).length
       });
@@ -166,31 +213,48 @@ Annotator.IO = (function() {
 
     /**
      *
+     *
+     *  @public
      *  @memberof Annotator.IO
+     *  @param {string} annotation - 
+     *  @param {function} callback - 
+     *  @return {undefined}    
      */
-    SendAnnotation: function(annotation, callback){
+    SendAnnotation: function (annotation, callback) {
       FakeSendAnnotation(annotation, callback);
     },
 
     /**
      *
+     *
+     *  @public
      *  @memberof Annotator.IO
+     *  @param {function} callback - 
+     *  @return {undefined}    
      */
-    NextTweet: function(callback){
+    NextTweet: function (callback) {
       FakeNextTweet(callback);
     },
 
     /**
      *
+     *
+     *  @public
      *  @memberof Annotator.IO
+     *  @param {function} callback - 
+     *  @return {undefined}    
      */
-    PreviousTweet: function(callback){
+    PreviousTweet: function (callback) {
       FakePreviousTweet(callback);
     },
 
     /**
      *
+     *
+     *  @public
      *  @memberof Annotator.IO
+     *  @param {function} callback - 
+     *  @return {undefined}    
      */
     Pause: function (callback) {
       FakePause(callback);
@@ -198,17 +262,26 @@ Annotator.IO = (function() {
 
     /**
      *
+     *
+     *  @public
      *  @memberof Annotator.IO
+     *  @param {function} callback - 
+     *  @return {undefined}    
      */
-    Resume: function(callback) {
+    Resume: function (callback) {
       FakeResume(callback);
     },
 
     /**
      *
+     *
+     *  @public
      *  @memberof Annotator.IO
+     *  @param {number} num - 
+     *  @param {function} callback - 
+     *  @return {undefined}    
      */
-    GetTweet: function(num, callback){
+    GetTweet: function (num, callback) {
       FakeGetTweet(num, callback);
     }
   };

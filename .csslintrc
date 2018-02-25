@@ -1,0 +1,12 @@
+{
+  "ignore": [
+    "adjoining-classes",
+    "box-model",
+    "overqualified-elements",
+    "box-sizing"
+  ],
+  "warnings": [
+  ],
+  "errors": [
+  ]
+}

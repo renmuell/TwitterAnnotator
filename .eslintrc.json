@@ -4,7 +4,6 @@
     },
     "extends": "eslint:recommended",
     "rules": {
-
         "require-jsdoc": ["error", {
             "require": {
                 "FunctionDeclaration": true,
@@ -24,7 +23,6 @@
                 "SwitchCase": 1
             }
         ],
-
         "linebreak-style": [
             "error",
             "unix"
