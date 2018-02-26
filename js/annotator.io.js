@@ -1,7 +1,7 @@
 /******************************************************************************
  * annotator.io.js
  *
- * Contains all server calls
+ * Includes all server calls. Currently containing only fake calls!
  *
  *****************************************************************************/
 
@@ -9,7 +9,7 @@
 var Annotator = Annotator || {};
 
 /**
- *  The user interface logic
+ *  The IO logic.
  *
  *  @memberof Annotator
  *  @namespace Annotator.IO
@@ -81,13 +81,13 @@ Annotator.IO = (function () {
   /* Fake Method ----------------------------------------------------------- */
 
   /**
-   *  
+   *  Sets annotation of current tweet and calls next tweet function.
    *
    *  @private
    *  @memberof Annotator.IO
    *  @inner
-   *  @param {string} annotation - 
-   *  @param {function} callback - 
+   *  @param {string} annotation - chosen text
+   *  @param {ioCallback} callback - callback function
    *  @return {undefined}    
    */
   function FakeSendAnnotation (annotation, callback) {
@@ -96,12 +96,12 @@ Annotator.IO = (function () {
   }
   
   /**
-   *  
+   *  Increments current tweet number and sends the current tweet.
    *
    *  @private
    *  @memberof Annotator.IO
    *  @inner
-   *  @param {function} callback - 
+   *  @param {ioCallback} callback - callback function
    *  @return {undefined}    
    */
   function FakeNextTweet (callback) {
@@ -112,12 +112,12 @@ Annotator.IO = (function () {
   }
   
   /**
-   *  
+   *  Decrements current tweet number and sends the current tweet. 
    *
    *  @private
    *  @memberof Annotator.IO
    *  @inner
-   *  @param {function} callback - 
+   *  @param {ioCallback} callback - callback function
    *  @return {undefined}    
    */
   function FakePreviousTweet (callback) {
@@ -128,12 +128,12 @@ Annotator.IO = (function () {
   }
   
   /**
-   *  
+   *  Sends "fakeSuccessStatus" after s time delay.
    *
    *  @private
    *  @memberof Annotator.IO
    *  @inner
-   *  @param {function} callback - 
+   *  @param {ioCallback} callback - callback function
    *  @return {undefined}    
    */
   function FakePause (callback) {
@@ -145,12 +145,12 @@ Annotator.IO = (function () {
   }
   
   /**
-   *  
+   *  Just sends the current tweet. 
    *
    *  @private
    *  @memberof Annotator.IO
    *  @inner
-   *  @param {function} callback - 
+   *  @param {ioCallback} callback - callback function
    *  @return {undefined}    
    */
   function FakeResume (callback) {
@@ -158,13 +158,13 @@ Annotator.IO = (function () {
   }
   
   /**
-   *  
+   *  Gets n-th tweet of fakeTweets.
    *
    *  @private
    *  @memberof Annotator.IO
    *  @inner
-   *  @param {number} num - 
-   *  @param {function} callback - 
+   *  @param {number} num - number of tweet
+   *  @param {ioCallback} callback - callback function
    *  @return {undefined}    
    */
   function FakeGetTweet (num, callback) {
@@ -181,13 +181,21 @@ Annotator.IO = (function () {
 
     FakeSendTweet(callback);
   }
+
   /**
-   *  
+   *  Sends current tweet with chosen annotation after a time delay. Also:
+   *
+   *  - success - success of call
+   *  - hasNext - there is a next tweet for annotation
+   *  - hasPrevious - there is a previous tweet for annotation
+   *  - countTweets - how many tweet exists for annotation
+   *  - currentTweetNum - the id of current tweet
+   *  - countAnnotatedTweets - how many are already annotated
    *
    *  @private
    *  @memberof Annotator.IO
    *  @inner
-   *  @param {function} callback - 
+   *  @param {ioCallback} callback - callback function
    *  @return {undefined}    
    */
   function FakeSendTweet (callback) {
@@ -209,15 +217,37 @@ Annotator.IO = (function () {
 
   /* Interface ------------------------------------------------------------- */
 
+  /**
+   *  Server json result.
+   *
+   *  @typedef ioCallJsonResult
+   *  @type {Object}
+   *  @property {string}  tweet - tweet text
+   *  @property {string}  chosen - chosen annotation, if none: empty string
+   *  @property {boolean} success - success of call
+   *  @property {boolean} hasNext - there is a next tweet for annotation
+   *  @property {boolean} hasPrevious - there is a previous tweet for annotation
+   *  @property {number}  countTweets - how many tweet exists for annotation
+   *  @property {number}  currentTweetNum - the id of current tweet
+   *  @property {number}  countAnnotatedTweets - how many are already annotated
+   */
+
+  /**
+   *  Callback server call
+   *
+   *  @callback ioCallback
+   *  @param {ioCallJsonResult} json - Server json result.
+   */
+
   return {
 
     /**
-     *
+     *  Send annotation of tweet to server.
      *
      *  @public
      *  @memberof Annotator.IO
-     *  @param {string} annotation - 
-     *  @param {function} callback - 
+     *  @param {string} annotation - chosen text 
+     *  @param {ioCallback} callback - callback function
      *  @return {undefined}    
      */
     SendAnnotation: function (annotation, callback) {
@@ -225,11 +255,11 @@ Annotator.IO = (function () {
     },
 
     /**
-     *
+     *  Requests next tweet.
      *
      *  @public
      *  @memberof Annotator.IO
-     *  @param {function} callback - 
+     *  @param {ioCallback} callback - callback function
      *  @return {undefined}    
      */
     NextTweet: function (callback) {
@@ -237,11 +267,11 @@ Annotator.IO = (function () {
     },
 
     /**
-     *
+     *  Requests previous tweet.
      *
      *  @public
      *  @memberof Annotator.IO
-     *  @param {function} callback - 
+     *  @param {ioCallback} callback - callback function
      *  @return {undefined}    
      */
     PreviousTweet: function (callback) {
@@ -249,11 +279,11 @@ Annotator.IO = (function () {
     },
 
     /**
-     *
+     *  Send pause to server.
      *
      *  @public
      *  @memberof Annotator.IO
-     *  @param {function} callback - 
+     *  @param {ioCallback} callback - callback function
      *  @return {undefined}    
      */
     Pause: function (callback) {
@@ -261,11 +291,11 @@ Annotator.IO = (function () {
     },
 
     /**
-     *
+     *  Send resume to server.
      *
      *  @public
      *  @memberof Annotator.IO
-     *  @param {function} callback - 
+     *  @param {ioCallback} callback - callback function
      *  @return {undefined}    
      */
     Resume: function (callback) {
@@ -273,12 +303,12 @@ Annotator.IO = (function () {
     },
 
     /**
-     *
+     *  Gets a specific tweet for annotation by number.
      *
      *  @public
      *  @memberof Annotator.IO
-     *  @param {number} num - 
-     *  @param {function} callback - 
+     *  @param {number} num - tweet number
+     *  @param {ioCallback} callback - callback function
      *  @return {undefined}    
      */
     GetTweet: function (num, callback) {

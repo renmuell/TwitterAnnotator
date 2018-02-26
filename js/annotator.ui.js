@@ -11,7 +11,7 @@
 var Annotator = Annotator || {};
 
 /**
- *  The user interface logic
+ *  The UI logic.
  *
  *  @memberof Annotator
  *  @namespace Annotator.UI
@@ -78,12 +78,12 @@ Annotator.UI = (function(){
   /* Action Handler -------------------------------------------------------- */
 
   /**
-   *  Keyboard event on pressing down.
+   *  Keyboard event handler for handling key pressing down.
    *
    *  @private
    *  @memberof Annotator.UI
    *  @inner
-   *  @param {KeyboardEvent} event - keydown event
+   *  @param {KeyboardEvent} event - keydown event object
    *  @return {undefined}
    */
   function Document_KeyDownHandler (event) {
@@ -104,12 +104,12 @@ Annotator.UI = (function(){
   }
 
   /**
-   *  Keyboard event on releasing up.
+   *  Keyboard event handler for handling key releasing.
    *
    *  @private
    *  @memberof Annotator.UI
    *  @inner
-   *  @param {KeyboardEvent} event - keyup event
+   *  @param {KeyboardEvent} event - keyup event object
    *  @return {undefined}
    */
   function Document_KeyUpHandler (event) {
@@ -132,7 +132,7 @@ Annotator.UI = (function(){
   }
 
   /**
-   *  ClickHanlder for PauseBtn.
+   *  Click handler for Button "PauseBtn".
    *
    *  @private
    *  @memberof Annotator.UI
@@ -145,7 +145,7 @@ Annotator.UI = (function(){
   }
 
   /**
-   *  ClickHanlder for GoBtn.
+   *  Click handler for Button "GoBtn".
    *
    *  @private
    *  @memberof Annotator.UI
@@ -158,7 +158,7 @@ Annotator.UI = (function(){
   }
 
   /**
-   *  ClickHanlder for PreviousBtn.
+   *  Click handler for Button "PreviousBtn".
    *
    *  @private
    *  @memberof Annotator.UI
@@ -171,7 +171,7 @@ Annotator.UI = (function(){
   }
 
   /**
-   *  ClickHanlder for NextBtn.
+   *  Click handler for Button "NextBtn".
    *
    *  @private
    *  @memberof Annotator.UI
@@ -184,7 +184,7 @@ Annotator.UI = (function(){
   }
 
   /**
-   *  ClickHanlder for HelpBtn.
+   *  Click handler for Button "HelpBtn".
    *
    *  @private
    *  @memberof Annotator.UI
@@ -199,7 +199,7 @@ Annotator.UI = (function(){
   }
 
   /**
-   *  ClickHanlder for PauseBtn.
+   *  Submit handler for annotator form.
    *
    *  @private
    *  @memberof Annotator.UI
@@ -212,7 +212,7 @@ Annotator.UI = (function(){
   }
 
   /**
-   *  ClickHanlder for NeutralBtn.
+   *  Click handler for Button "NeutralBtn".
    *
    *  @private
    *  @memberof Annotator.UI
@@ -225,7 +225,7 @@ Annotator.UI = (function(){
   }
 
   /**
-   *  ClickHanlder for IrrelevantBtn.
+   *  Click handler for Button "IrrelevantBtn".
    *
    *  @private
    *  @memberof Annotator.UI
@@ -238,7 +238,7 @@ Annotator.UI = (function(){
   }
 
   /**
-   *  ClickHanlder for OpinionatedBtn.
+   *  Click handler for Button "OpinionatedBtn".
    *
    *  @private
    *  @memberof Annotator.UI
@@ -251,7 +251,7 @@ Annotator.UI = (function(){
   }
 
   /**
-   *  Show button press state by toggle active class on.
+   *  Shows button press state by toggle active class.
    *
    *  @private
    *  @memberof Annotator.UI
@@ -264,7 +264,7 @@ Annotator.UI = (function(){
   }
 
   /**
-   *  Reset button press state of all used buttons by toggle active class off.
+   *  Resets button press state for all buttons by toggling the active class off.
    *
    *  @private
    *  @memberof Annotator.UI
@@ -352,12 +352,12 @@ Annotator.UI = (function(){
   }
 
   /**
-   *  Gets next or  
+   *  Get next or previous tweet helper function.
    *
    *  @private
    *  @memberof Annotator.UI
    *  @inner
-   *  @param {function} ioCall - chosen text
+   *  @param {function} ioCall - next or previous tweet io call.
    *  @return {undefined}
    */
   function GetTweet (ioCall) {
@@ -367,7 +367,7 @@ Annotator.UI = (function(){
   }
 
   /**
-   *  Gets on specific tweet for annotation by number. 
+   *  Gets a specific tweet for annotation by number. 
    *
    *  @private
    *  @memberof Annotator.UI
@@ -387,7 +387,7 @@ Annotator.UI = (function(){
    *  @private
    *  @memberof Annotator.UI
    *  @inner
-   *  @param {object} json - result of io call
+   *  @param {ioCallJsonResult} json - result of io call
    *  @return {undefined}
    */
   function AnnotatorIO_TweetHandler (json) {
@@ -428,12 +428,12 @@ Annotator.UI = (function(){
   /* Status ---------------------------------------------------------------- */
 
   /**
-   *  Set status of annotation.
+   *  Set statistics of annotation, like how many are annotated.
    *
    *  @private
    *  @memberof Annotator.UI
    *  @inner
-   *  @param {object} json - result of io call 
+   *  @param {ioCallJsonResult} json - result of io call 
    *  @return {undefined}
    */
   function SetStatus (json) {
@@ -448,7 +448,7 @@ Annotator.UI = (function(){
    *  @private
    *  @memberof Annotator.UI
    *  @inner
-   *  @param {object} json - result of io call 
+   *  @param {ioCallJsonResult} json - result of io call 
    *  @return {undefined}
    */
   function SetNavigation (json) {
@@ -458,7 +458,7 @@ Annotator.UI = (function(){
   }
 
   /**
-   *  Set browser URL hash.
+   *  Set browser URL-hash.
    *
    *  @private
    *  @memberof Annotator.UI
@@ -537,7 +537,7 @@ Annotator.UI = (function(){
   return {
 
     /**
-     *  Initialize Script.
+     *  Initialize annotator UI.
      *  
      *  @public
      *  @memberof Annotator.UI

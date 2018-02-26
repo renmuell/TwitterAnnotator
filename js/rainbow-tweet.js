@@ -1,7 +1,7 @@
 /******************************************************************************
  * rainbow-tweet.js
  *
- *  Contains an extension language for rainbow.js, the Tweet Syntax.
+ * Contains an extension language for rainbow.js, the Tweet Syntax.
  *
  *****************************************************************************/
 

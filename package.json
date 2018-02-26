@@ -1,7 +1,7 @@
 {
   "name": "twitterannotator",
-  "version": "1.0.4",
-  "description": "Twitter Annotator is an UI-Prototype for annotation tweets.",
+  "version": "1.0.5",
+  "description": "Twitter Annotator is an UI-Prototype for annotating tweets",
   "main": "index.html",
   "directories": {
     "doc": "doc"
