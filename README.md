@@ -14,18 +14,28 @@ The goal was simplicity and elegance.
 
 ## Features
 
+Over the years this little UI-Demo grew into a playground for testing new browser features and coding/design practices.  Below some features are listed.
+
 ### Responsive design
+
+The UI fits the context of use and only needs 320x270 pixels for all his features. It was tested on all popular browsers (chrome, firefox, internet explorer, edge) on the desktop (mac & windows) and mobile devices (apple & android) with different sizes.  It requires JavaScript and Stylesheet to work and will warn the user if either is missing. 
 
   ![mobile](http://renmuell.github.io/TwitterAnnotator/img/mobile.gif)
 
 ### Browser history support
+
+This prototype is a one-page web app but also supports the native browser history to navigate annotated tweets.
 
   ![history](http://renmuell.github.io/TwitterAnnotator/img/history.png)
 
 
 ### Tweet syntax highlight
 
+With the use of the JavaScript library Rainbow, a little syntax highlighting of tweets was implemented.
+
 ### Keyboard support
+
+While annotating a large set of tweets, I desired a shortcut for annotating. With keyboard support, a large set of tweets can be annotated with minimal movement.
 
   ![keyboard](http://renmuell.github.io/TwitterAnnotator/img/keyboard.png)
 
