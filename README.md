@@ -1,4 +1,4 @@
-# TwitterAnnotator
+# Twitter Annotator
 
 Twitter Annotator is an UI-Prototype for annotating tweets. Currently, it has a dummy back-end to showcase the concept.
 
@@ -38,6 +38,10 @@ The goal was simplicity and elegance.
   |  D  | set Opinionated |
   |  C  | pause/resume    |
   |  W  | toggle Help     |
+
+## JSDoc
+
+[http://renmuell.github.io/TwitterAnnotator/jsdoc/](http://renmuell.github.io/TwitterAnnotator/jsdoc/)
 
 ## Thanks to
 
