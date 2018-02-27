@@ -8,7 +8,7 @@ The goal was simplicity and elegance.
 
 ![showcase](http://renmuell.github.io/TwitterAnnotator/img/showcase.gif)
 
-## Demo page
+## Prototype page
 
 [https://renmuell.github.io/TwitterAnnotator/](https://renmuell.github.io/TwitterAnnotator/)
 
