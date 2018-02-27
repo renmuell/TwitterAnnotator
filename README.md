@@ -6,12 +6,24 @@ While helping a friend to annotate tweets for his research paper, I created this
 
 The goal was simplicity and elegance.
 
+![showcase](http://renmuell.github.io/TwitterAnnotator/img/showcase.gif)
+
 ## Features
 
-- responsive design
-- browser history support
-- tweet syntax highlight
-- keyboard support:
+### Responsive design
+
+  ![mobile](http://renmuell.github.io/TwitterAnnotator/img/mobile.gif)
+
+### Browser history support
+
+  ![history](http://renmuell.github.io/TwitterAnnotator/img/history.png)
+
+
+### Tweet syntax highlight
+
+### Keyboard support
+
+  ![keyboard](http://renmuell.github.io/TwitterAnnotator/img/keyboard.png)
 
   | Key | Action          |
   |---- | --------------- |
