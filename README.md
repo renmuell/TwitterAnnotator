@@ -8,6 +8,10 @@ The goal was simplicity and elegance.
 
 ![showcase](http://renmuell.github.io/TwitterAnnotator/img/showcase.gif)
 
+## Demo page
+
+[https://renmuell.github.io/TwitterAnnotator/](https://renmuell.github.io/TwitterAnnotator/)
+
 ## Features
 
 ### Responsive design
